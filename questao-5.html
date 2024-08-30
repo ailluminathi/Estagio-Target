@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverter String</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(255, 255, 255, 0.356);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            margin-top: 50px;
+            width: 70%;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            color: rgb(106, 175, 198);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.595);
+        }
+
+        button {
+            width: 100px;
+            padding: 5px;
+            border: none;
+            background-color: rgb(106, 175, 198);
+            border-radius: 16px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function inverterString(s) {
+            let resultado = "";
+            for (let i = s.length - 1; i >= 0; i--) {
+                resultado += s[i];
+            }
+            return resultado;
+        }
+
+        function inverter() {
+            
+            const string = document.getElementById('inputString').value;
+            
+            const resultado = inverterString(string);
+        
+            document.getElementById('resultado').textContent = "Palavra invertida: " + resultado;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Inverter palavra</h1>
+        <label for="inputString">Digite uma palavra:</label>
+        <input type="text" id="inputString" placeholder="Digite aqui">
+        <button onclick="inverter()">Inverter</button>
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>

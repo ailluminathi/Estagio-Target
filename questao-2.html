@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Fibonacci</title>
+    <script>
+
+        function pertenceFibonacci(n) {
+            let a = 0;
+            let b = 1;
+            while (a < n) {
+                let temp = a;
+                a = b;
+                b = temp + b;
+            }
+            if (a === n) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function verificarFibonacci() {
+            const numero = parseInt(document.getElementById('numero').value, 10);
+            const resultado = pertenceFibonacci(numero);
+
+            let mensagem;
+            if (resultado) {
+                mensagem = 'O número ' + numero + ' pertence à sequência de Fibonacci.';
+            } else {
+                mensagem = 'O número ' + numero + ' não pertence à sequência de Fibonacci.';
+            }
+
+            document.getElementById('resultado').innerHTML = mensagem;
+        } 
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(255, 255, 255, 0.356);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            color: rgb(106, 175, 198);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.595);
+        }
+
+        input[type="number"] {
+            border-radius: 16px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        button {
+            width: 100px;
+            padding: 5px;
+            border: none;
+            background-color: rgb(106, 175, 198);
+            border-radius: 16px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Verificar se o Número Pertence à Sequência de Fibonacci</h1>
+            <input type="number" id="numero" placeholder="Digite um número">
+            <button onclick="verificarFibonacci()">Verificar</button>
+            <p id="resultado"></p>
+    </div>
+</body>
+</html>

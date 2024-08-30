@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentual de Faturamento por Estado</title>
+    <script>
+        function calcularPercentuais() {
+            const faturamento = {
+                SP: 67836.43,
+                RJ: 36678.66,
+                MG: 29229.88,
+                ES: 27165.48,
+                Outros: 19849.53
+            };
+
+            let total = 0;
+            for (const estado in faturamento) {
+                total += faturamento[estado];
+            }
+
+            let resultado = '';
+            for (const estado in faturamento) {
+                const percentual = (faturamento[estado] / total) * 100;
+                resultado += `O percentual de ${estado} é ${percentual.toFixed(2)}%<br>`;
+            }
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(255, 255, 255, 0.356);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            color: rgb(106, 175, 198);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.595);
+        }
+
+        button {
+            width: 100px;
+            padding: 5px;
+            border: none;
+            background-color: rgb(106, 175, 198);
+            border-radius: 16px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Percentual de Faturamento por Estado</h1>
+        <button onclick="calcularPercentuais()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>
