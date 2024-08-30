@@ -75,19 +75,16 @@
                 'Outros': 19849.53
             };
 
-            // Calcular o total do faturamento
             let total = 0;
             for (let estado in faturamento) {
                 total += faturamento[estado];
             }
 
-            // Calcular os percentuais
             let percentuais = {};
             for (let estado in faturamento) {
                 percentuais[estado] = (faturamento[estado] / total * 100).toFixed(2);
             }
 
-            // Atualizar o conteúdo da div com os resultados
             let resultado = '<h2>Percentuais de representação por estado</h2>';
             resultado += '<ul>';
             for (let estado in percentuais) {
@@ -102,7 +99,6 @@
 <body>
     <div>
         <h1>Faturamento por Estado</h1>
-        <!-- Tabela com os valores de faturamento por estado -->
         <table>
             <thead>
                 <tr>
@@ -134,7 +130,6 @@
             </tbody>
         </table>
         <button onclick="calcularPercentuais()">Calcular Percentuais</button>
-        <!-- Div para exibir os resultados -->
         <div id="resultado"></div>
     </div>
 </body>
