@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faturamento por Estado</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(255, 255, 255, 0.356);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            margin-top: 50px;
+            width: 80%;
+        }
+
+        h1, #resultado>h2 {
+            font-size: 1.5em;
+            color: rgb(106, 175, 198);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.595);
+        }
+
+        button {
+            width: 100px;
+            padding: 5px;
+            border: none;
+            background-color: rgb(106, 175, 198);
+            border-radius: 16px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.248);
+            cursor: pointer;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(106, 175, 198);
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+    <script>
+        function calcularPercentuais() {
+            const faturamento = {
+                'SP': 67836.43,
+                'RJ': 36678.66,
+                'MG': 29229.88,
+                'ES': 27165.48,
+                'Outros': 19849.53
+            };
+
+            // Calcular o total do faturamento
+            let total = 0;
+            for (let estado in faturamento) {
+                total += faturamento[estado];
+            }
+
+            // Calcular os percentuais
+            let percentuais = {};
+            for (let estado in faturamento) {
+                percentuais[estado] = (faturamento[estado] / total * 100).toFixed(2);
+            }
+
+            // Atualizar o conteúdo da div com os resultados
+            let resultado = '<h2>Percentuais de representação por estado</h2>';
+            resultado += '<ul>';
+            for (let estado in percentuais) {
+                resultado += `<li>${estado}: ${percentuais[estado]}%</li>`;
+            }
+            resultado += '</ul>';
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Faturamento por Estado</h1>
+        <!-- Tabela com os valores de faturamento por estado -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Estado</th>
+                    <th>Faturamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SP</td>
+                    <td>R$ 67.836,43</td>
+                </tr>
+                <tr>
+                    <td>RJ</td>
+                    <td>R$ 36.678,66</td>
+                </tr>
+                <tr>
+                    <td>MG</td>
+                    <td>R$ 29.229,88</td>
+                </tr>
+                <tr>
+                    <td>ES</td>
+                    <td>R$ 27.165,48</td>
+                </tr>
+                <tr>
+                    <td>Outros</td>
+                    <td>R$ 19.849,53</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="calcularPercentuais()">Calcular Percentuais</button>
+        <!-- Div para exibir os resultados -->
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>
